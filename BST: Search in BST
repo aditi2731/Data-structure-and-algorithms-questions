@@ -1,0 +1,19 @@
+bool searchInBST(BinaryTreeNode<int> *root, int x) {
+    //base case root agr null hoga toh  age kuch ho hi nhi skta false bhej do waps
+    if(root==NULL){
+        return false;
+    }
+//root ka data hum jisko dhund rhe h uske barabar ho jayega toh true bhej do
+    if(root->data==x)
+    return true;
+//root ka data bada h agr x se toh left part mei chale jao
+    if(root->data > x){
+        //left part mei
+        return searchInBST(root->left,x);
+    }
+//vrna right mei a jao
+    else{
+        //right part mei
+        return searchInBST(root->right,x);
+    }
+}
