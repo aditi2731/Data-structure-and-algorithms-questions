@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+
+
+int main() {
+	int arr[10]={2,6,5,4};
+  cout<<"address of first memory block is"<<arr<<endl; // location of first element of array
+	cout<<arr[0]<<endl;//0
+	cout<<arr[1]<<endl;//0
+	cout<<"address of first memory block is"<<&arr[0]<<endl;//location of first element of array
+	
+	
+	cout<<"4th"<<*arr<<endl;//prints the element a 0th index =2
+	cout<<"5th"<<*arr+1<<endl;//*arr ki value mei 1 add ho jayega =3
+  cout<<"6th"<<*(arr+1)<<endl;//6 print ho jayega
+  cout<<"7th"<<*(arr)+1<<endl;//3 print ho jayega
+	cout<<"8th"<<(*arr)+1<<endl;// 3 print ho jayega
+	 int i=3;
+	 cout<<i[arr]<<endl;//4th 
+	 
+	 //difference between pointer and arrays
+	 //sizeof array:-array*4
+	 //       pointer:-8 byte
+	 int temp[10];
+	 cout<< sizeof(temp)<<endl;//40
+	 
+	 int *ptr= &temp[10]= {1,2};
+	 cout<<sizeof(ptr)<<endl;//8
+	  cout<<sizeof(*ptr)<<endl;//integer value thi 4
+	  cout<<sizeof(&ptr)<<endl;//8 
+	  
+//	  int a[20]={1,2,3,5};
+//	  cout<< &a[0]<<endl;
+	 // cout<<&a<<endl;
+	//  cout<<a<<endl;
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	 
+	 
+	 
+	return 0;
+}
