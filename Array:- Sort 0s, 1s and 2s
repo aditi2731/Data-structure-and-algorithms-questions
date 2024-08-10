@@ -1,0 +1,28 @@
+
+class Solution
+{
+    public:
+    void sort012(int a[], int n)
+    {
+        // code here 
+        int p0=0, p=0, p2=n-1;;
+        while(p<=p2){
+            if(a[p]==0){
+                a[p]=a[p0];
+                a[p0]=0;
+                p0++;
+                p++;
+            }
+            else if(a[p]==2){
+                a[p]=a[p2];
+                a[p2]=2;
+                p2--;
+                
+            }
+            else p++;
+        }
+    }
+    
+};
+
+
