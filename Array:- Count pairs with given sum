@@ -1,0 +1,109 @@
+LOOPS:-
+
+// C++ implementation of simple method to find count of
+// pairs with given sum K.
+#include <bits/stdc++.h>
+using namespace std;
+
+// Returns number of pairs in arr[0..n-1] with sum equal
+// to 'K'
+int getPairsCount(int arr[], int n, int K)
+{
+    // Initialize result
+    int count = 0;
+
+    // Consider all possible pairs and check their sums
+    for (int i = 0; i < n; i++)
+        for (int j = i + 1; j < n; j++)
+            if (arr[i] + arr[j] == K)
+                count++;
+
+    return count;
+}
+
+// Driver function to test the above function
+int main()
+{
+    int arr[] = { 1, 5, 7, -1 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int K = 6;
+    cout << "Count of pairs is "
+         // Function Call
+         << getPairsCount(arr, n, K);
+    return 0;
+}
+
+
+Binary Search
+
+// C++ code to implement the approach
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to find the count of pairs
+int getPairsCount(int arr[], int n, int k)
+{
+    sort(arr, arr + n);
+    int x = 0, c = 0, y, z;
+    for (int i = 0; i < n - 1; i++) {
+        x = k - arr[i];
+
+        // Lower bound from i+1
+        int y = lower_bound(arr + i + 1, arr + n, x) - arr;
+
+        // Upper bound from i+1
+        int z = upper_bound(arr + i + 1, arr + n, x) - arr;
+        c = c + z - y;
+    }
+    return c;
+}
+
+// Driver code
+int main()
+{
+    int arr[] = { 1, 5, 7, -1 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 6;
+
+    // Function call
+    cout << "Count of pairs is "
+         << getPairsCount(arr, n, k);
+    return 0;
+}
+
+
+HASHING
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Returns number of pairs in arr[0..n-1] with sum equal to 'sum'
+int getPairsCount(int arr[], int n, int sum)
+{
+    unordered_map<int, int> mp;
+    int count = 0;
+    
+    for (int i = 0; i < n; i++) {
+        // Check if there exists an element in the map which can be paired with arr[i] to form the sum
+        if (mp.find(sum - arr[i]) != mp.end()) {
+            count += mp[sum - arr[i]];
+        }
+        // Increment the count of the current element in the map
+        mp[arr[i]]++;
+    }
+    return count;
+}
+
+// Driver code
+int main()
+{
+    int arr[] = { 1, 5, 7, -1, 5 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int sum = 6;
+
+    // Function Call
+    cout << "Count of pairs is " << getPairsCount(arr, n, sum);
+    return 0;
+}
+
