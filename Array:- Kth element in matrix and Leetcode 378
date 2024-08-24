@@ -1,0 +1,44 @@
+1:- Traverse in matrix and store each element in map.
+2:- When k element reaches then pop the elements above it
+3:- return the top element
+
+
+
+int kthSmallest(int mat[MAX][MAX], int n, int k)
+{
+  //Your code here
+  priority_queue<int>pq;//map creation
+  for(int i=0;i<n;i++){
+      for(int j=0; j<n;j++){
+          pq.push(mat[i][j]);
+          if(pq.size()>k){
+              pq.pop();
+          }
+      }
+  }
+  return pq.top();
+}
+
+
+BY BINARY SEARCH AND UPPER BOUND
+class Solution {
+public:
+    int kthSmallest(vector<vector<int>>& matrix, int k) {
+       int n= matrix.size();
+       int low=matrix[0][0];
+       int high= matrix[n-1][n-1];
+       while(low<high){
+        int mid=low+(high-low)/2;
+        int count=0;
+        for(int i=0; i<n; i++){
+            count += upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
+        }
+        if(count<k){
+            low=mid+1;
+        }
+        else
+        high=mid;
+       }
+       return low;
+    }
+};
