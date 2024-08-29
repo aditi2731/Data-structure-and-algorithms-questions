@@ -53,3 +53,61 @@ int main()
 }
 
 // } Driver Code Ends
+
+
+# STACK
+
+
+//{ Driver Code Starts
+/* Driver program to test above function */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+public:
+    int maxSubStr(string str){
+        //Write your code here
+        int ans=0;
+     int i=0;
+     stack<int>s;
+     s.push(str[i]);
+     i++;
+     while(i<str.size()){
+        while(i<str.size()&&s.size()&&i<str.size()&&(s.top()!=str[i])){
+            s.pop();
+            i++;
+        }
+        if(s.empty()){
+            ans++;
+        }
+        while((i<str.size())&&(s.empty()||s.top()==str[i])){
+            s.push(str[i]);
+            i++;
+        }
+     }
+     if(s.empty())
+     return ans;
+     return -1;
+    }
+};
+
+
+//{ Driver Code Starts.
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string str;
+	    cin >> str;
+	    Solution ob;
+	    int ans = ob.maxSubStr(str);
+	    cout << ans<<endl;
+	}
+	return 0;
+}
+
+// } Driver Code Ends
