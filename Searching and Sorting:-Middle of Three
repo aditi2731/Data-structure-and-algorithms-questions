@@ -1,0 +1,12 @@
+
+
+class Solution{
+  public:
+    int middle(int A, int B, int C){
+        //code here//Position this line where user code will be pasted.
+        if(A>B && C<B && A>C || A<B && C>B && A<C) return B;
+        if(A<C && B>C && A<B || A>C && B<C && A>B) return C;
+        if(B<A && C>A && B<C || B>A && C<A && B>C) return A;
+    }
+};
+
