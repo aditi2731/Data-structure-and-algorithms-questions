@@ -1,0 +1,21 @@
+Print sum of n natuural number
+#include <iostream>
+using namespace std;
+
+void sumN(int i,int n,int sum){
+    if(i==n){
+        sum=sum+i;
+        cout<<sum<<endl;
+        return ;
+    }
+    sum=sum+i;
+    sumN(i+1,n,sum);
+    
+}
+int main() {
+	sumN(1,5,0);
+}
+
+
+
+WAP TO FIND THE FACTORIAL OF NUMBER
